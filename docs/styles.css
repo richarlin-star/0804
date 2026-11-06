@@ -1,0 +1,58 @@
+:root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; }
+*{box-sizing:border-box}
+html, body, #app{width:100%;height:100%;margin:0;overflow:hidden}
+.app{position:relative;display:flex;flex-direction:column;background:#071527;color:#e8f3ff}
+.toolbar{flex:0 0 56px;min-height:56px;display:flex;align-items:center;gap:8px;padding:7px 12px;background:linear-gradient(96deg,#111f32,#142b43);border-bottom:1px solid #244059;box-shadow:0 5px 18px #0002;z-index:10}
+.brand{display:flex;align-items:center;gap:9px;min-width:172px;margin-right:auto}
+.brand-mark{width:35px;height:35px;display:grid;place-items:center;border-radius:9px;color:#ffb085;background:#ff6a131c;border:1px solid #ff6a1360;font-size:15px;font-weight:900}
+.brand-copy{display:flex;flex-direction:column;gap:1px;white-space:nowrap}
+.brand-copy strong{font-size:13px;letter-spacing:.01em}
+.brand-copy span{color:#8aa2bc;font-size:10px}
+button,.control,select{font:inherit;white-space:nowrap;cursor:pointer}
+button,.control,select{background:#1e354e;color:#e8f3ff;border:1px solid #38516d;border-radius:8px;padding:9px 11px;font-size:12px}
+button:hover,.control:hover,select:hover{background:#2b4765;border-color:#5881a4}
+.control.file-control{background:#ff6a13;color:#101e30;font-weight:700;border-color:#ff6a13}
+.control.file-control:hover{background:#ff852d}
+.file-control input,.primary-action input{display:none}
+.icon-control{padding:6px 10px;font-size:19px;line-height:1}
+select{max-width:110px;min-width:70px;padding:8px 6px}
+.stage{position:relative;flex:1;min-height:0;background:radial-gradient(ellipse at 50% 45%,#153459,#061321 75%);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.empty-state{text-align:center;max-width:580px;padding:26px;display:flex;flex-direction:column;align-items:center}
+.empty-graphic{position:relative;width:130px;height:114px;display:grid;place-items:center;margin:0 0 6px}
+.code-icon{width:116px;height:79px;border-radius:13px;background:linear-gradient(150deg,#224b72,#0d2842);border:1px solid #54799d;box-shadow:0 15px 50px #050c19a0;display:grid;place-items:center;color:#ff934f;font-size:28px;font-weight:750}
+.spark{position:absolute;border-radius:50%;background:#58c9ec;box-shadow:0 0 15px #35c9ff}
+.spark-one{height:9px;width:9px;top:8px;right:2px}
+.spark-two{height:6px;width:6px;left:4px;bottom:17px}
+h1{margin:0 0 10px;font-size:clamp(20px,3vw,30px);letter-spacing:.015em}
+p{color:#b3c7d9;font-size:14px;line-height:1.6;margin:0 0 20px}
+.quick-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.primary-action,.secondary-action{padding:12px 18px;border-radius:10px;font-size:13px;font-weight:650}
+.primary-action{color:#112239;background:#ff6a13;cursor:pointer}
+.primary-action:hover{background:#ff853b}
+.secondary-action{background:#19334f;border:1px solid #506b89}
+.tiny-note{color:#819bb4;font-size:11px;line-height:1.6;margin-top:23px}
+.viewport{width:100%;height:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.viewport iframe{display:block;width:100%;height:100%;border:none;background:#091728;box-shadow:0 0 28px #0006}
+.viewport.fit-contain iframe{flex:none;width:100%;height:auto;aspect-ratio:var(--ratio,16/10);max-height:100%;max-width:100%}
+.viewport.fit-cover iframe{width:100%;height:100%;aspect-ratio:var(--ratio,16/10);min-width:100%;min-height:100%}
+.viewport.fit-stretch iframe{width:100%;height:100%}
+.viewport.auto-ratio iframe{aspect-ratio:auto;width:100%;height:100%}
+.status{position:absolute;left:12px;bottom:12px;right:12px;width:fit-content;max-width:calc(100% - 24px);padding:7px 12px;border-radius:7px;background:#0b2235e8;color:#c1e5fc;font-size:11px;border:1px solid #274d68;line-height:1.35;opacity:0;pointer-events:none;transition:opacity .18s}
+.status.visible{opacity:1}
+.status.error{color:#ffd0c2;background:#4a1f1ce8;border-color:#993b2d}
+.hidden{display:none!important}
+.app.presentation .toolbar{display:none}
+.expand-button{position:absolute;top:8px;right:10px;z-index:20;background:#091c30b6;border:1px solid #46637d;box-shadow:0 4px 15px #0003}
+.dialog-backdrop{position:absolute;inset:0;z-index:40;background:#020812d9;display:grid;place-items:center;padding:20px}
+.dialog-card{width:min(440px,100%);background:#142b44;border:1px solid #416183;border-radius:14px;padding:24px;box-shadow:0 20px 60px #0008}
+.dialog-card h2{margin:0 0 10px;font-size:19px}
+.dialog-card p{font-size:12px}
+.dialog-card input{width:100%;border:1px solid #42617c;border-radius:8px;padding:12px;background:#081b2c;color:white;outline:none;font:inherit;font-size:13px}
+.dialog-card input:focus{border-color:#ff6a13}
+.dialog-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:16px}
+.dialog-actions button:last-child{background:#ff6a13;color:#142337;border-color:#ff6a13;font-weight:700}
+@media(max-width:800px){.toolbar{gap:4px;padding:6px}.brand{min-width:36px}.brand-copy{display:none}.control,.toolbar select{font-size:10px;padding:7px 6px}.icon-control{padding:5px 7px;font-size:16px}}
+
+/* Frame scaling uses a virtual 2560×1600 / 1920×1080 canvas. */
+.viewport{display:block;position:relative}
+.viewport iframe{position:absolute;left:0;top:0;max-height:none;max-width:none;transform-origin:top left}

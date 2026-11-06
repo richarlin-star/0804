@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#071527" />
+  <title>HTML Slide Embed · PowerPoint Content Add-in</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- The add-in runs as a content add-in in PowerPoint. Fails safely in a browser preview. -->
+  <script src="https://officeapis.public.onecdn.static.microsoft/1/office.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div id="app" class="app">
+    <header id="toolbar" class="toolbar">
+      <div class="brand" title="HTML Slide Embed">
+        <div class="brand-mark">&lt;/&gt;</div>
+        <div class="brand-copy"><strong>HTML Slide Embed</strong><span>PowerPoint · 互動式 HTML</span></div>
+      </div>
+      <label class="control file-control" title="選擇自帶 CSS 和 JavaScript 的單一 HTML 檔案">
+        <input id="fileInput" type="file" accept=".html,.htm,text/html" />
+        <span>＋ 匯入 HTML</span>
+      </label>
+      <button id="demoButton" class="control ghost" type="button">示範</button>
+      <button id="urlButton" class="control ghost" type="button">輸入網址</button>
+      <select id="fitMode" aria-label="內容縮放方式" title="縮放模式">
+        <option value="contain">完整顯示</option>
+        <option value="cover">填滿</option>
+        <option value="stretch">拉伸</option>
+      </select>
+      <select id="aspectRatio" aria-label="內容比例" title="內容比例">
+        <option value="16/10">16:10 · 2560</option>
+        <option value="16/9">16:9 · 1920</option>
+        <option value="4/3">4:3 · 1600</option>
+        <option value="auto">響應式</option>
+      </select>
+      <button id="reloadButton" class="icon-control" type="button" title="重新載入動畫" aria-label="重新載入">↻</button>
+      <button id="clearButton" class="icon-control" type="button" title="清除這張投影片的 HTML" aria-label="清除">×</button>
+      <button id="collapseButton" class="icon-control" type="button" title="隱藏工具列以展示" aria-label="隱藏工具列">▴</button>
+    </header>
+    <main id="stage" class="stage">
+      <div id="emptyState" class="empty-state">
+        <div class="empty-graphic">
+          <div class="code-icon">&lt;html&gt;</div>
+          <div class="spark spark-one"></div><div class="spark spark-two"></div>
+        </div>
+        <h1>把 HTML 直接放進簡報</h1>
+        <p>選擇本機單一 HTML 檔，或載入已部署的 HTTPS 網站。</p>
+        <div class="quick-actions">
+          <label class="primary-action">選擇 HTML 檔案<input id="emptyFileInput" type="file" accept=".html,.htm,text/html" /></label>
+          <button id="emptyDemoButton" class="secondary-action" type="button">先看互動範例</button>
+        </div>
+        <div class="tiny-note">適合 Claude 生成的獨立 HTML 動畫。多檔案 React 專案請先部署成 HTTPS 網站。</div>
+      </div>
+      <div id="viewport" class="viewport hidden">
+        <iframe id="contentFrame" title="HTML 動畫內容" sandbox="allow-scripts allow-forms allow-popups" referrerpolicy="no-referrer"></iframe>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </main>
+    <button id="expandButton" class="expand-button hidden" type="button">⚙ 顯示控制列</button>
+    <div id="urlDialog" class="dialog-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="urlDialogTitle">
+      <form id="urlForm" class="dialog-card">
+        <h2 id="urlDialogTitle">載入 HTTPS 網頁</h2>
+        <p>適合 Claude 的 React 專案。目標網站必須允許 iframe 嵌入。</p>
+        <input id="urlInput" type="url" required placeholder="https://example.com/demo/" autocomplete="url" />
+        <div class="dialog-actions"><button id="cancelUrl" type="button">取消</button><button type="submit">載入網址</button></div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
